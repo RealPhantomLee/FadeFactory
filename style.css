@@ -1,0 +1,71 @@
+:root {
+    --bg-dark: #0A0A0A;
+    --off-white: #F5F5F5;
+    --gold: #D4AF37;
+    --font-heading: 'Bebas Neue', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--off-white);
+    font-family: var(--font-body);
+    line-height: 1.6;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 50px;
+    transition: background 0.3s ease;
+    z-index: 1000;
+}
+
+.navbar.solid {
+    background: #000;
+    padding: 15px 50px;
+}
+
+.logo { font-family: var(--font-heading); font-size: 2rem; color: var(--gold); }
+
+.nav-links { display: flex; list-style: none; align-items: center; gap: 30px; }
+
+.nav-links a { text-decoration: none; color: var(--off-white); font-weight: 700; text-transform: uppercase; }
+
+.btn-book { padding: 10px 20px; border: 2px solid var(--gold); color: var(--gold); }
+
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
+}
+
+.hero h1 { font-family: var(--font-heading); font-size: 5rem; }
+
+.btn-primary { 
+    display: inline-block; padding: 15px 40px; margin-top: 20px;
+    background: var(--gold); color: var(--bg-dark); font-weight: 700;
+    text-decoration: none; border-radius: 5px;
+}
+
+section { padding: 80px 50px; }
+
+h2 { font-family: var(--font-heading); font-size: 3rem; text-align: center; margin-bottom: 40px; color: var(--gold); }
+
+.service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+
+.service-item { display: flex; justify-content: space-between; border-bottom: 1px solid #333; padding: 15px 0; }
+
+.team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+
+.barber-card { background: #1A1A1A; padding: 20px; text-align: center; }
+
+.barber-img { width: 100%; height: 250px; background: #333; margin-bottom: 15px; }
