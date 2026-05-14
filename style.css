@@ -2,6 +2,7 @@
     --bg-dark: #0A0A0A;
     --off-white: #F5F5F5;
     --gold: #D4AF37;
+    --neon-orange: #FF4500;
     --font-heading: 'Bebas Neue', sans-serif;
     --font-body: 'Inter', sans-serif;
 }
@@ -15,6 +16,7 @@ body {
     line-height: 1.6;
 }
 
+/* Navbar */
 .navbar {
     position: fixed;
     top: 0;
@@ -22,50 +24,95 @@ body {
     display: flex;
     justify-content: space-between;
     padding: 20px 50px;
-    transition: background 0.3s ease;
+    background: rgba(10, 10, 10, 0.9);
     z-index: 1000;
+    align-items: center;
+    backdrop-filter: blur(5px);
 }
 
-.navbar.solid {
-    background: #000;
-    padding: 15px 50px;
+.logo { 
+    font-family: var(--font-heading); 
+    font-size: 2rem; 
+    color: var(--gold); 
+    text-transform: uppercase;
 }
 
-.logo { font-family: var(--font-heading); font-size: 2rem; color: var(--gold); }
+.nav-links { display: flex; list-style: none; gap: 20px; }
+.nav-links a { text-decoration: none; color: var(--off-white); font-weight: 700; text-transform: uppercase; transition: color 0.3s; }
+.nav-links a:hover { color: var(--gold); }
 
-.nav-links { display: flex; list-style: none; align-items: center; gap: 30px; }
-
-.nav-links a { text-decoration: none; color: var(--off-white); font-weight: 700; text-transform: uppercase; }
-
-.btn-book { padding: 10px 20px; border: 2px solid var(--gold); color: var(--gold); }
-
+/* Hero */
 .hero {
     height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
+    background-image: url('assets/images/StoreImage.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
 }
 
-.hero h1 { font-family: var(--font-heading); font-size: 5rem; }
-
-.btn-primary { 
-    display: inline-block; padding: 15px 40px; margin-top: 20px;
-    background: var(--gold); color: var(--bg-dark); font-weight: 700;
-    text-decoration: none; border-radius: 5px;
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
 }
 
-section { padding: 80px 50px; }
+.hero-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
 
-h2 { font-family: var(--font-heading); font-size: 3rem; text-align: center; margin-bottom: 40px; color: var(--gold); }
+.hero h1 { font-family: var(--font-heading); font-size: 5rem; color: var(--off-white); }
 
-.service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 2px solid var(--gold);
+    color: var(--gold);
+    transition: 0.3s;
+}
 
-.service-item { display: flex; justify-content: space-between; border-bottom: 1px solid #333; padding: 15px 0; }
+.btn:hover { background: var(--gold); color: var(--bg-dark); }
 
+/* Page Content */
+.page-content { padding: 120px 50px; }
+h2 { font-family: var(--font-heading); font-size: 3rem; color: var(--gold); text-align: center; margin-bottom: 40px; }
+
+/* Gallery */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+.gallery-grid img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* Barber Cards */
 .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
-
-.barber-card { background: #1A1A1A; padding: 20px; text-align: center; }
-
-.barber-img { width: 100%; height: 250px; background: #333; margin-bottom: 15px; }
+.barber-card { background: #1A1A1A; padding: 20px; text-align: center; border-radius: 8px; }
+.barber-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    margin: 0 auto 20px;
+    border: 3px solid var(--gold);
+}
