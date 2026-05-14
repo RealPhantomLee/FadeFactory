@@ -1,8 +1,26 @@
-# Fade Factory Barbershop
+# Fade Factory
 
-Modern, responsive barbershop website built with HTML5, CSS3, and Vanilla JavaScript.
+Welcome to the official Fade Factory website repository.
 
-## Setup & Customization
-- **Images:** Place logo and shop photos in `assets/images/`.
-- **Barber Profiles:** Replace placeholder `div.barber-img` background images in `style.css` or use `<img>` tags in `index.html`.
-- **Booking:** Update the link in `index.html` (currently pointing to Booksy).
+## Project Structure
+- `/src/pages/`: Contains all HTML files (Services, Team, Gallery, Contact).
+- `/src/css/`: Contains the main stylesheet (`style.css`).
+- `/src/js/`: Contains the main script (`script.js`).
+- `/src/assets/images/`: Store all your images here.
+- `index.html`: The homepage.
+
+## Getting Started
+
+1.  **Clone the repository:**
+    `git clone https://github.com/RealPhantomLee/FadeFactory`
+
+2.  **Run locally:**
+    Simply open `index.html` in your web browser.
+
+3.  **Deploying:**
+    Connect this repository to Vercel or GitHub Pages and select the root directory for deployment.
+
+## Customization
+- **Images:** Add your own shop/barber photos to `src/assets/images/` and update the `src` attributes in HTML files.
+- **Styling:** Edit `src/css/style.css` to change colors, fonts, or layout.
+- **Content:** Edit the HTML files in `src/pages/` to update text, hours, or services.
