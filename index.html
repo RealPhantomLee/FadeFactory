@@ -6,24 +6,31 @@
     <title>Fade Factory | Professional Grooming</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="logo">FADE FACTORY</div>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#team">Team</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="https://booksy.com" class="btn-book" target="_blank">BOOK NOW</a></li>
-        </ul>
-    </nav>
-
-    <header id="home" class="hero">
+    <header id="home">
+        <nav class="navbar">
+            <div class="logo">FADE FACTORY</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="https://booksy.com" class="btn btn-book" target="_blank">BOOK NOW</a></li>
+            </ul>
+            <div class="hamburger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </nav>
+        
         <div class="hero-content">
             <h1>ELEVATED GROOMING</h1>
             <p>Streetwear culture meets traditional barbering.</p>
-            <a href="https://booksy.com" class="btn-primary" target="_blank">BOOK NOW</a>
+            <a href="https://booksy.com" class="btn btn-primary" target="_blank">BOOK NOW</a>
         </div>
     </header>
 
@@ -45,22 +52,42 @@
     <section id="team">
         <h2>THE TEAM</h2>
         <div class="team-grid">
-            <!-- Placeholder Barbers -->
+            <div class="barber-card">
+                <div class="barber-img" style="background-image: url('assets/images/BarberDee.jpg');"></div>
+                <h3>Dee</h3>
+                <p>Expert in fades and beard styling.</p>
+            </div>
             <div class="barber-card">
                 <div class="barber-img"></div>
                 <h3>Master Barber 1</h3>
-                <p>Expert in fades and beard styling.</p>
+                <p>Specializing in classic cuts and sharp lines.</p>
             </div>
             <div class="barber-card">
                 <div class="barber-img"></div>
                 <h3>Master Barber 2</h3>
-                <p>Expert in fades and beard styling.</p>
+                <p>Creative styles and intricate detailing.</p>
             </div>
-            <div class="barber-card">
-                <div class="barber-img"></div>
-                <h3>Master Barber 3</h3>
-                <p>Expert in fades and beard styling.</p>
-            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <h2>GALLERY</h2>
+        <div class="gallery-grid">
+            <img src="assets/images/o.jpg" alt="Barber shop gallery image">
+            <img src="assets/images/o (1).jpg" alt="Barber shop gallery image">
+            <img src="assets/images/o (2).jpg" alt="Barber shop gallery image">
+            <img src="assets/images/o (3).jpg" alt="Barber shop gallery image">
+            <img src="assets/images/o (4).jpg" alt="Barber shop gallery image">
+            <img src="assets/images/o (5).jpg" alt="Barber shop gallery image">
+            <img src="assets/images/o (6).jpg" alt="Barber shop gallery image">
+            <img src="assets/images/o (7).jpg" alt="Barber shop gallery image">
+            <img src="assets/images/o (8).jpg" alt="Barber shop gallery image">
+            <img src="assets/images/o (9).jpg" alt="Barber shop gallery image">
+            <img src="assets/images/o (10).jpg" alt="Barber shop gallery image">
+            <img src="assets/images/o (11).jpg" alt="Barber shop gallery image">
+            <img src="assets/images/o (12).jpg" alt="Barber shop gallery image">
+            <img src="assets/images/o (13).jpg" alt="Barber shop gallery image">
+            <img src="assets/images/o (14).jpg" alt="Barber shop gallery image">
         </div>
     </section>
 
@@ -77,8 +104,15 @@
                 <p>Sat: 9am – 6pm</p>
                 <p>Sun: Closed</p>
             </div>
+            <a href="tel:+16263335337" class="btn btn-call-now">CALL NOW</a>
         </div>
     </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Fade Factory. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
