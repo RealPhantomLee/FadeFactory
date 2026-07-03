@@ -1,26 +1,36 @@
-# Fade Factory
-
-Welcome to the official Fade Factory website repository.
-
-## Project Structure
-- `/src/pages/`: Contains all HTML files (Services, Team, Gallery, Contact).
-- `/src/css/`: Contains the main stylesheet (`style.css`).
-- `/src/js/`: Contains the main script (`script.js`).
-- `/src/assets/images/`: Store all your images here.
-- `index.html`: The homepage.
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
 
-1.  **Clone the repository:**
-    `git clone https://github.com/RealPhantomLee/FadeFactory`
+First, run the development server:
 
-2.  **Run locally:**
-    Simply open `index.html` in your web browser.
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-3.  **Deploying:**
-    Connect this repository to Vercel or GitHub Pages and select the root directory for deployment.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Customization
-- **Images:** Add your own shop/barber photos to `src/assets/images/` and update the `src` attributes in HTML files.
-- **Styling:** Edit `src/css/style.css` to change colors, fonts, or layout.
-- **Content:** Edit the HTML files in `src/pages/` to update text, hours, or services.
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
