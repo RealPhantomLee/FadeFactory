@@ -70,34 +70,34 @@ export default function DateTimeStep() {
 
   return (
     <div>
-      <h2 className="text-2xl font-bold text-[#F5F5F5] mb-1">Select date &amp; time</h2>
-      <p className="text-[#F5F5F5]/60 mb-6">A {durationMin}-minute slot (service + cleanup).</p>
+      <h2 className="display text-3xl text-cream">Select date &amp; time</h2>
+      <p className="mt-2 text-muted">A {durationMin}-minute slot (service + cleanup).</p>
 
-      <div className="flex gap-2 overflow-x-auto pb-2 mb-6">
+      <div className="mb-6 mt-8 flex gap-2 overflow-x-auto pb-2">
         {days.map((d) => (
           <button
             key={d.value}
             type="button"
             onClick={() => dispatch({ type: "SET_DATE", date: d.value })}
-            className={`flex-shrink-0 w-20 rounded-lg border px-2 py-3 text-center transition ${
+            className={`w-20 flex-shrink-0 border px-2 py-3 text-center transition ${
               date === d.value
-                ? "border-[#D4AF37] bg-[#D4AF37]/10 text-[#D4AF37]"
-                : "border-white/10 text-[#F5F5F5]/70 hover:border-[#D4AF37]/60"
+                ? "border-gold bg-gold/10 text-gold"
+                : "border-line text-cream/70 hover:border-gold/60"
             }`}
           >
-            <span className="block text-xs font-bold uppercase">{d.weekday}</span>
-            <span className="block text-sm mt-1">{d.day}</span>
+            <span className="block text-xs font-bold uppercase tracking-wider">{d.weekday}</span>
+            <span className="mt-1 block text-sm">{d.day}</span>
           </button>
         ))}
       </div>
 
-      {!date && <p className="text-[#F5F5F5]/50">Pick a day to see available times.</p>}
-      {date && loading && <p className="text-[#F5F5F5]/50">Loading times…</p>}
-      {date && error && <p className="text-[#FF4500]">{error}</p>}
+      {!date && <p className="text-muted">Pick a day to see available times.</p>}
+      {date && loading && <p className="text-muted">Loading times…</p>}
+      {date && error && <p className="text-gold-light">{error}</p>}
 
       {date && !loading && !error && (
-        <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
-          {slots.length === 0 && <p className="text-[#F5F5F5]/50 col-span-full">No times available for this day.</p>}
+        <div className="grid grid-cols-3 gap-2 sm:grid-cols-4">
+          {slots.length === 0 && <p className="col-span-full text-muted">No times available for this day.</p>}
           {slots.map((slot) => (
             <button
               key={slot.start}
@@ -107,7 +107,7 @@ export default function DateTimeStep() {
                 dispatch({ type: "SET_SLOT", slot });
                 dispatch({ type: "NEXT" });
               }}
-              className="rounded border border-white/10 py-2 text-sm text-[#F5F5F5] hover:border-[#D4AF37] hover:text-[#D4AF37] transition disabled:opacity-25 disabled:line-through disabled:cursor-not-allowed disabled:hover:border-white/10 disabled:hover:text-[#F5F5F5]"
+              className="border border-line py-2.5 text-sm text-cream transition hover:border-gold hover:text-gold disabled:cursor-not-allowed disabled:line-through disabled:opacity-25 disabled:hover:border-line disabled:hover:text-cream"
             >
               {formatTime(slot.start)}
             </button>
@@ -115,11 +115,11 @@ export default function DateTimeStep() {
         </div>
       )}
 
-      <div className="mt-8">
+      <div className="mt-10">
         <button
           type="button"
           onClick={() => dispatch({ type: "BACK" })}
-          className="text-sm font-bold uppercase text-[#F5F5F5]/60 hover:text-[#D4AF37]"
+          className="text-sm font-bold uppercase tracking-wider text-muted transition-colors hover:text-gold"
         >
           ← Back
         </button>

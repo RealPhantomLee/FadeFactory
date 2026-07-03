@@ -17,21 +17,22 @@ export default function ServiceCard({ service, href, selected, onToggle }: Props
   const body = (
     <>
       {service.popular && (
-        <span className="absolute -top-3 left-4 bg-[#D4AF37] text-[#0A0A0A] text-xs font-bold uppercase px-2 py-0.5 rounded">
-          Most Popular
+        <span className="absolute right-4 top-4 bg-gold px-2 py-0.5 text-[0.6rem] font-bold uppercase tracking-wider text-ink">
+          ★ Popular
         </span>
       )}
-      <div className="flex justify-between items-baseline gap-3">
-        <h3 className="text-lg font-bold text-[#F5F5F5]">{service.name}</h3>
-        <span className="text-[#D4AF37] font-bold text-lg whitespace-nowrap">${service.price}</span>
+      <div className="flex items-start justify-between gap-3 pr-16">
+        <h3 className="display text-xl text-cream">{service.name}</h3>
       </div>
-      <p className="text-sm text-[#F5F5F5]/60 mt-1">{service.duration} min</p>
-      {service.description && <p className="text-sm text-[#F5F5F5]/70 mt-2">{service.description}</p>}
+      <div className="mt-2 flex items-baseline gap-3">
+        <span className="display text-2xl text-gold">${service.price}</span>
+        <span className="text-xs uppercase tracking-wider text-muted">{service.duration} min</span>
+      </div>
+      {service.description && <p className="mt-3 text-sm text-muted">{service.description}</p>}
     </>
   );
 
-  const base =
-    "relative block text-left w-full rounded-lg border p-4 pt-5 bg-[#141414] transition";
+  const base = "card relative block w-full p-6 text-left";
 
   if (selectable) {
     return (
@@ -39,27 +40,26 @@ export default function ServiceCard({ service, href, selected, onToggle }: Props
         type="button"
         aria-pressed={selected}
         onClick={() => onToggle!(service.id)}
-        className={`${base} ${
-          selected ? "border-[#D4AF37] ring-1 ring-[#D4AF37]" : "border-white/10 hover:border-[#D4AF37]/60"
-        }`}
+        className={`${base} ${selected ? "!border-gold ring-1 ring-gold" : ""}`}
       >
         {body}
-        <span className={`mt-3 inline-block text-xs font-bold uppercase ${selected ? "text-[#D4AF37]" : "text-[#F5F5F5]/50"}`}>
-          {selected ? "Selected ✓" : "Tap to add"}
+        <span
+          className={`mt-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider ${
+            selected ? "text-gold" : "text-muted"
+          }`}
+        >
+          {selected ? "Selected ✓" : "+ Add to booking"}
         </span>
       </button>
     );
   }
 
   return (
-    <div className={`${base} border-white/10`}>
+    <div className={base}>
       {body}
       {href && (
-        <Link
-          href={href}
-          className="mt-3 inline-block px-4 py-1.5 text-sm font-bold uppercase border-2 border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-[#0A0A0A] transition rounded"
-        >
-          Book
+        <Link href={href} className="btn btn-outline mt-5 !px-5 !py-2 text-xs">
+          Book This
         </Link>
       )}
     </div>

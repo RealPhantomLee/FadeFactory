@@ -6,33 +6,35 @@ export default function Stepper() {
   const { state } = useBooking();
 
   return (
-    <ol className="flex items-center gap-2 mb-8">
+    <ol className="mb-12 flex items-center justify-center gap-2 sm:gap-3">
       {STEP_LABELS.map((label, i) => {
         const done = i < state.step;
         const current = i === state.step;
         return (
-          <li key={label} className="flex items-center gap-2">
+          <li key={label} className="flex items-center gap-2 sm:gap-3">
             <div className="flex items-center gap-2">
               <span
-                className={`flex h-7 w-7 items-center justify-center rounded-full text-xs font-bold ${
+                className={`flex h-9 w-9 items-center justify-center rounded-full border text-sm font-bold transition-all ${
                   current
-                    ? "bg-[#D4AF37] text-[#0A0A0A]"
+                    ? "border-gold bg-gold text-ink"
                     : done
-                      ? "bg-[#D4AF37]/30 text-[#D4AF37]"
-                      : "bg-white/10 text-[#F5F5F5]/50"
+                      ? "border-gold/50 bg-gold/15 text-gold"
+                      : "border-line bg-panel text-muted"
                 }`}
               >
                 {done ? "✓" : i + 1}
               </span>
               <span
-                className={`hidden sm:inline text-sm font-bold uppercase ${
-                  current ? "text-[#D4AF37]" : "text-[#F5F5F5]/50"
+                className={`hidden text-xs font-semibold uppercase tracking-[0.15em] sm:inline ${
+                  current ? "text-gold" : done ? "text-cream/70" : "text-muted"
                 }`}
               >
                 {label}
               </span>
             </div>
-            {i < STEP_LABELS.length - 1 && <span className="w-6 h-px bg-white/15" />}
+            {i < STEP_LABELS.length - 1 && (
+              <span className={`h-px w-5 sm:w-8 ${done ? "bg-gold/50" : "bg-line"}`} />
+            )}
           </li>
         );
       })}

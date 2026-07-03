@@ -43,49 +43,46 @@ export default function DetailsStep() {
   }
 
   const inputClass =
-    "w-full rounded border border-white/10 bg-[#141414] px-3 py-2 text-[#F5F5F5] focus:border-[#D4AF37] focus:outline-none";
+    "w-full border border-line bg-panel px-4 py-3 text-cream placeholder:text-muted/60 focus:border-gold focus:outline-none transition-colors";
 
   return (
     <div>
-      <h2 className="text-2xl font-bold text-[#F5F5F5] mb-1">Your details</h2>
-      <p className="text-[#F5F5F5]/60 mb-6">
-        {state.draft.serviceIds.length} service(s) · ~{minutes} min · ${price}
+      <h2 className="display text-3xl text-cream">Your details</h2>
+      <p className="mt-2 text-muted">
+        {state.draft.serviceIds.length} service(s) · ~{minutes} min ·{" "}
+        <span className="text-gold">${price}</span>
       </p>
 
-      <form onSubmit={handleSubmit} className="space-y-4 max-w-md">
+      <form onSubmit={handleSubmit} className="mt-8 max-w-md space-y-5">
         <div>
-          <label className="block text-sm font-bold uppercase text-[#F5F5F5]/70 mb-1">Name</label>
+          <label className="mb-1 block text-xs font-semibold uppercase tracking-[0.2em] text-cream/70">Name</label>
           <input required value={form.name} onChange={(e) => update("name", e.target.value)} className={inputClass} />
         </div>
         <div>
-          <label className="block text-sm font-bold uppercase text-[#F5F5F5]/70 mb-1">Phone</label>
+          <label className="mb-1 block text-xs font-semibold uppercase tracking-[0.2em] text-cream/70">Phone</label>
           <input required type="tel" value={form.phone} onChange={(e) => update("phone", e.target.value)} className={inputClass} />
         </div>
         <div>
-          <label className="block text-sm font-bold uppercase text-[#F5F5F5]/70 mb-1">Email</label>
+          <label className="mb-1 block text-xs font-semibold uppercase tracking-[0.2em] text-cream/70">Email</label>
           <input required type="email" value={form.email} onChange={(e) => update("email", e.target.value)} className={inputClass} />
         </div>
         <div>
-          <label className="block text-sm font-bold uppercase text-[#F5F5F5]/70 mb-1">Notes (optional)</label>
+          <label className="mb-1 block text-xs font-semibold uppercase tracking-[0.2em] text-cream/70">Notes (optional)</label>
           <textarea value={form.notes} onChange={(e) => update("notes", e.target.value)} rows={3} className={inputClass} />
         </div>
 
-        {error && <p className="text-[#FF4500]">{error}</p>}
+        {error && <p className="text-gold-light">{error}</p>}
 
-        <div className="flex items-center gap-4 pt-2">
+        <div className="flex items-center gap-6 pt-2">
           <button
             type="button"
             onClick={() => dispatch({ type: "BACK" })}
-            className="text-sm font-bold uppercase text-[#F5F5F5]/60 hover:text-[#D4AF37]"
+            className="text-sm font-bold uppercase tracking-wider text-muted transition-colors hover:text-gold"
           >
             ← Back
           </button>
-          <button
-            type="submit"
-            disabled={submitting}
-            className="px-6 py-2 font-bold uppercase text-sm border-2 border-[#D4AF37] text-[#D4AF37] rounded hover:bg-[#D4AF37] hover:text-[#0A0A0A] transition disabled:opacity-40"
-          >
-            {submitting ? "Booking…" : "Confirm booking"}
+          <button type="submit" disabled={submitting} className="btn btn-gold disabled:opacity-50">
+            {submitting ? "Booking…" : "Confirm Booking"}
           </button>
         </div>
       </form>

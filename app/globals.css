@@ -1,19 +1,269 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-:root {
-    --bg-dark: #0A0A0A;
-    --off-white: #F5F5F5;
-    --gold: #D4AF37;
-    --neon-orange: #FF4500;
+/* ------------------------------------------------------------------ */
+/* Design tokens — exposed as Tailwind utilities (bg-ink, text-gold…)  */
+/* ------------------------------------------------------------------ */
+@theme {
+  --color-ink: #0b0b0c;
+  --color-charcoal: #141416;
+  --color-panel: #1b1b1e;
+  --color-line: #2a2a2e;
+  --color-gold: #c9a24b;
+  --color-gold-light: #e6c878;
+  --color-cream: #f4f1ea;
+  --color-muted: #9d9a93;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-playfair), Georgia, "Times New Roman", serif;
+}
+
+/* ------------------------------------------------------------------ */
+/* Base                                                                */
+/* ------------------------------------------------------------------ */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-    background-color: var(--bg-dark);
-    color: var(--off-white);
-    font-family: 'Inter', sans-serif;
-    line-height: 1.6;
+  background-color: var(--color-ink);
+  color: var(--color-cream);
+  font-family: var(--font-sans);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Add custom styles here if needed, or translate to Tailwind */
+::selection {
+  background: var(--color-gold);
+  color: #0b0b0c;
+}
+
+/* Refined scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0b0b0c;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2a2e;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold);
+}
+
+/* ------------------------------------------------------------------ */
+/* Reusable classes                                                    */
+/* ------------------------------------------------------------------ */
+
+/* Small uppercase gold label with a leading rule */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  color: var(--color-gold);
+}
+.eyebrow::before {
+  content: "";
+  width: 2.25rem;
+  height: 1px;
+  background: var(--color-gold);
+  opacity: 0.8;
+}
+.eyebrow.eyebrow-center::after {
+  content: "";
+  width: 2.25rem;
+  height: 1px;
+  background: var(--color-gold);
+  opacity: 0.8;
+}
+
+/* Serif display headings */
+.display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.95rem 2rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+.btn-gold {
+  background: var(--color-gold);
+  color: #0b0b0c;
+}
+.btn-gold:hover {
+  background: var(--color-gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px -12px rgba(201, 162, 75, 0.65);
+}
+.btn-outline {
+  border-color: rgba(201, 162, 75, 0.5);
+  color: var(--color-gold);
+  background: transparent;
+}
+.btn-outline:hover {
+  background: var(--color-gold);
+  color: #0b0b0c;
+  transform: translateY(-2px);
+}
+.btn-ghost {
+  border-color: rgba(244, 241, 234, 0.2);
+  color: var(--color-cream);
+}
+.btn-ghost:hover {
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+}
+
+/* Cards */
+.card {
+  background: var(--color-charcoal);
+  border: 1px solid var(--color-line);
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  border-color: rgba(201, 162, 75, 0.55);
+  transform: translateY(-4px);
+  box-shadow: 0 24px 50px -30px rgba(0, 0, 0, 0.9);
+}
+
+/* Thin gold accent rule */
+.rule-gold {
+  width: 3.5rem;
+  height: 2px;
+  background: var(--color-gold);
+}
+
+/* Section vertical rhythm */
+.section {
+  padding-top: 6.5rem;
+  padding-bottom: 6.5rem;
+}
+
+/* ------------------------------------------------------------------ */
+/* Scroll reveal (paired with components/Reveal.tsx)                   */
+/* ------------------------------------------------------------------ */
+.reveal {
+  opacity: 0;
+  transform: translateY(34px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Animations / flare                                                  */
+/* ------------------------------------------------------------------ */
+@keyframes kenburns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.14);
+  }
+}
+.kenburns {
+  animation: kenburns 22s ease-in-out infinite alternate;
+}
+
+@keyframes floatUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.float-up {
+  animation: floatUp 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Animated gold underline on hover (nav links) */
+.link-underline {
+  position: relative;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 1.5px;
+  background: var(--color-gold);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.35s ease;
+}
+.link-underline:hover::after,
+.link-underline.active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Image hover zoom helper */
+.img-zoom {
+  overflow: hidden;
+}
+.img-zoom img {
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.img-zoom:hover img {
+  transform: scale(1.08);
+}
+
+/* Subtle grain/vignette overlay for hero */
+.vignette::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    120% 120% at 50% 40%,
+    transparent 40%,
+    rgba(0, 0, 0, 0.55) 100%
+  );
+  pointer-events: none;
+}

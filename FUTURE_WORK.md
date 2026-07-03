@@ -19,17 +19,33 @@ and verified end-to-end against a mock backend. The items below remain.
 ## Features
 
 - [ ] **Barber selection step** — `barberId` is already threaded through `BookingDraft` and the
-  `AvailabilityProvider` interface. Add a `BarberSelectStep` + per-barber availability once
-  `/team` data exists.
-- [ ] **Missing nav pages** — `/team`, `/gallery`, `/contact` are linked in `components/Navbar.tsx`
-  but not implemented yet (currently 404).
+  `AvailabilityProvider` interface. Add a `BarberSelectStep` + per-barber availability using the
+  now-existing `lib/team.ts` data.
+- [x] **Nav pages** — `/team`, `/gallery`, `/contact` are built (2026-07-03 redesign).
+- [ ] **Contact form** — `components/ContactForm.tsx` is front-end only (shows a success state, no
+  send). Wire to an email service or a `/api/contact` route handler.
+
+## Content to replace (placeholders from the redesign)
+
+- [ ] **`lib/team.ts`** — Marcus/Ray/Los are placeholder barbers with monogram avatars; only Dee
+  has a real photo. Replace with the real crew + headshots.
+- [ ] **`lib/testimonials.ts`** — example reviews + stats; swap for real ones.
+- [ ] **`lib/nav.ts`** (`SHOP`) — placeholder phone/email/address/hours/socials.
+- [ ] **`lib/schema.ts`** — replace placeholder LocalBusiness JSON-LD (`123 Barber St`,
+  `example.com`, dummy phone) with real details; keep it in sync with `SHOP` in `lib/nav.ts`.
+
+## Design / redesign notes (2026-07-03)
+
+The site was overhauled to a premium dark + gold aesthetic inspired by the Slidium barbershop
+template. Design system lives in `app/globals.css` (Tailwind v4 `@theme` tokens: `ink`, `charcoal`,
+`panel`, `gold`, `gold-light`, `cream`, `muted`; fonts Playfair Display + Inter). Reusable pieces:
+`Navbar`, `Footer`, `PageHero`, `SectionHeading`, `Reveal` (scroll animation), `BarberCard`,
+`GalleryGrid`, `Logo`. Home sections are under `components/home/`.
 
 ## Cleanup / launch prep
 
-- [ ] **`lib/schema.ts`** — replace placeholder LocalBusiness JSON-LD (`123 Barber St`,
-  `example.com`, dummy phone) with real address, phone, and URL for SEO.
-- [ ] **`app/layout.tsx`** — root metadata still says `"Create Next App"`; set real title/description.
 - [ ] **Deploy** — Vercel (project name is `fade-factory-migration`).
+- [ ] **`app/favicon.ico`** — still the default Next.js icon; replace with the Fade Factory mark.
 
 ## Architecture reference
 

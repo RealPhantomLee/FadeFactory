@@ -14,13 +14,16 @@ export default function ServiceSelectStep() {
 
   return (
     <div>
-      <h2 className="text-2xl font-bold text-[#F5F5F5] mb-1">Select services</h2>
-      <p className="text-[#F5F5F5]/60 mb-6">Choose one or more. Combos and add-ons stack.</p>
+      <h2 className="display text-3xl text-cream">Select services</h2>
+      <p className="mt-2 text-muted">Choose one or more — combos and add-ons stack.</p>
 
       {groups.map((group) => (
-        <div key={group.category} className="mb-8">
-          <h3 className="text-sm font-bold uppercase text-[#D4AF37] mb-3">{group.label}</h3>
-          <div className="grid gap-3 sm:grid-cols-2">
+        <div key={group.category} className="mt-10">
+          <div className="mb-4 flex items-center gap-3">
+            <span className="rule-gold" />
+            <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-gold">{group.label}</h3>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2">
             {group.services.map((service) => (
               <ServiceCard
                 key={service.id}
@@ -33,19 +36,19 @@ export default function ServiceSelectStep() {
         </div>
       ))}
 
-      <div className="sticky bottom-0 -mx-5 px-5 py-4 bg-[#0A0A0A]/95 backdrop-blur-sm border-t border-white/10 flex items-center justify-between">
+      <div className="sticky bottom-0 z-10 -mx-5 mt-10 flex items-center justify-between border-t border-line bg-ink/95 px-5 py-4 backdrop-blur-md sm:-mx-8 sm:px-8">
         <div className="text-sm">
-          <span className="text-[#F5F5F5]/60">{serviceIds.length} selected · </span>
-          <span className="text-[#F5F5F5]">~{minutes} min</span>
-          <span className="text-[#D4AF37] font-bold"> · ${price}</span>
+          <span className="text-muted">{serviceIds.length} selected · </span>
+          <span className="text-cream">~{minutes} min</span>
+          <span className="display ml-1 text-gold"> ${price}</span>
         </div>
         <button
           type="button"
           disabled={serviceIds.length === 0}
           onClick={() => dispatch({ type: "NEXT" })}
-          className="px-6 py-2 font-bold uppercase text-sm border-2 border-[#D4AF37] text-[#D4AF37] rounded hover:bg-[#D4AF37] hover:text-[#0A0A0A] transition disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-[#D4AF37]"
+          className="btn btn-gold disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:translate-y-0 disabled:hover:shadow-none"
         >
-          Next
+          Continue
         </button>
       </div>
     </div>

@@ -1,34 +1,63 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import PageHero from "@/components/PageHero";
+import Reveal from "@/components/Reveal";
 import ServiceCard from "@/components/booking/ServiceCard";
 import { getServicesByCategory } from "@/lib/services";
 
 export const metadata: Metadata = {
-  title: "Services | Fade Factory",
-  description: "Explore Fade Factory grooming services — haircuts, combos, beard work, and add-ons.",
+  title: "Services & Pricing",
+  description:
+    "Explore Fade Factory's full service menu — haircuts, combos, beard work, and grooming add-ons with honest pricing.",
 };
 
 export default function ServicesPage() {
   const groups = getServicesByCategory();
 
   return (
-    <main className="min-h-screen">
+    <>
       <Navbar />
-      <section className="max-w-4xl mx-auto px-5 pt-28 pb-20">
-        <h1 className="text-4xl md:text-5xl font-bold text-[#F5F5F5] mb-2">Services</h1>
-        <p className="text-[#F5F5F5]/60 mb-10">Pick a service to start booking.</p>
+      <main>
+        <PageHero
+          eyebrow="What We Do"
+          title={<>Services &amp; Pricing</>}
+          subtitle="Every appointment includes a consultation. Pick a service to start your booking."
+          image="/images/cut-07.jpg"
+        />
 
-        {groups.map((group) => (
-          <div key={group.category} className="mb-10">
-            <h2 className="text-xl font-bold uppercase text-[#D4AF37] mb-4">{group.label}</h2>
-            <div className="grid gap-4 sm:grid-cols-2">
-              {group.services.map((service) => (
-                <ServiceCard key={service.id} service={service} href={`/book?service=${service.id}`} />
-              ))}
-            </div>
+        <section className="section bg-ink">
+          <div className="mx-auto max-w-6xl px-5 sm:px-8">
+            {groups.map((group, gi) => (
+              <div key={group.category} className={gi > 0 ? "mt-16" : ""}>
+                <Reveal className="mb-8 flex items-center gap-4">
+                  <span className="rule-gold" />
+                  <h2 className="display text-3xl text-cream">{group.label}</h2>
+                </Reveal>
+                <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                  {group.services.map((service, i) => (
+                    <Reveal key={service.id} delay={(i % 3) * 80}>
+                      <ServiceCard service={service} href={`/book?service=${service.id}`} />
+                    </Reveal>
+                  ))}
+                </div>
+              </div>
+            ))}
+
+            <Reveal className="mt-16 border-t border-line pt-12 text-center">
+              <h3 className="display text-3xl text-cream">Ready for your best cut?</h3>
+              <p className="mx-auto mt-3 max-w-lg text-muted">
+                Build your appointment in seconds — stack services, pick a time, and you&apos;re set.
+              </p>
+              <Link href="/book" className="btn btn-gold mt-8">
+                Start Booking
+              </Link>
+            </Reveal>
           </div>
-        ))}
-      </section>
-    </main>
+        </section>
+      </main>
+      <Footer />
+    </>
   );
 }
